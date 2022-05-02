@@ -1,0 +1,35 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="main-form">
+        <div class="form-title">
+            <p class="reg-text">Авторизация</p>
+        </div>
+        {% if form.errors %}
+            <div class="error-text">
+                {{ form.non_field_errors.as_text }}
+            </div>
+        {% endif %}
+
+        <form class="form-box-login" method="post" id="login-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="input-label">
+                <p class="reg-text">Логин</p>
+            </div>
+            {{ form.username }}
+
+            <div class="input-label">
+                <p class="reg-text">Пароль</p>
+            </div>
+            {{ form.password }}
+
+        </form>
+        <button type="submit" form="login-form" class="form-button">Войти</button>
+        <div class="text-under-button">
+            <p class="reg-text">Нет аккаунта?</p> <a href="{% url 'auth:registration' %}" class="link">Регистрация</a>
+        </div>
+
+    </div>
+{% endblock %}

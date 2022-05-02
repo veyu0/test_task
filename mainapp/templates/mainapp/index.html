@@ -1,0 +1,21 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <img class="header-cat" src="{% static 'media/img_1.jpg' %}" alt="cat">
+            <p class="header-cat-text">Помоги котикам найти свой дом</p>
+        </div>
+        <div class="main-block">
+            <div class="card_1">
+                <p class="block-text text-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus rerum suscipit, temporibus sit deleniti quam. Cum a cupiditate iure tempora aut? Maxime quisquam similique ab maiores facilis ad officiis tenetur?</p>
+                <img class="block-img-1" src="{% static 'media/pic_3.jpg' %}" alt="photo">
+            </div>
+            <div class="card_2">
+                <img class="block-img-2" src="{% static 'media/pic_4.jpg' %}" alt="photo">
+                <p class="block-text text-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, libero rem cupiditate minima assumenda omnis ipsam deleniti eius non unde possimus architecto eligendi? Facilis maiores sed deleniti sit enim praesentium!</p>
+            </div>
+        </div>
+    
+    </div>
+{% endblock %}

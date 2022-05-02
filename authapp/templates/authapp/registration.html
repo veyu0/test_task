@@ -1,0 +1,33 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="register-form">
+        <form class="form-box" method="post" id="registration-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="input-label">
+                <p class="reg-text">Логин</p>
+            </div>
+            {{ form.username }}
+
+            <div class="input-label">
+                <p class="reg-text">Ваш Email</p>
+            </div>
+            {{ form.email }}
+
+            <div class="input-label">
+                <p class="reg-text">Пароль</p>
+            </div>
+            {{ form.password1 }}
+
+            <div class="input-label">
+                <p class="reg-text">Подтверждение пароля</p>
+            </div>
+            {{ form.password2 }}
+        </form>
+        <button type="submit" form="registration-form" class="form-button">Зарегистрироваться</button>
+        <div class="text-under-button">
+            <p class="reg-text">Уже есть аккаунт?</p> <a href="{% url 'auth:login' %}" class="link">Войти</a>
+        </div>
+    </div>
+{% endblock %}

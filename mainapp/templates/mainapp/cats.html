@@ -1,0 +1,21 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+    {% if user.is_staff %}
+        <button><a href="{% url 'create_cats' %}">Создать кошечку</a></button>
+    {% endif %}
+    <ul>
+        {% for object in object_list %}
+            <li>
+                <div>
+                    {{ object.name }}
+                    {{ object.age }}
+                    {{ object.breed }}
+                    {% if object.photo %}
+                        <img src="{{ object.photo.url }}" alt="photo">
+                    {% endif %}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

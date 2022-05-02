@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{{ title|title }}</title>
+	{% block css %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href={% static 'css/style_registration_page.css' %}>
+	{% endblock %}
+</head>
+<body>
+	<img class="logo" src="{% static 'media/logo.jpg' %}" alt="logo">
+            <a href="{% url 'authapp:registration' %}"><img class="lk-logo" src="{% static 'media/lk_logo.jpg' %}" alt="lk-logo"></a>
+            <ul class="menu">
+                {% include 'mainapp/includes/inc_menu.html' %}
+            </ul>
+  {% block content %}
+  {% endblock %}
+</body>
