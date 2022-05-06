@@ -3,7 +3,6 @@
 {% block content %}
     {% if user.is_staff %}
         <button class="cats-but"><a class="but-text" href="{% url 'create_cats' %}">Создать кошечку</a></button>
-        <button class="cats-but"><a class="but-text" href="{% url 'preupdate_cats' %}">Изменить кошечку</a></button>
     {% endif %}
     <ul class="cats-list">
         {% for object in object_list %}
@@ -23,6 +22,7 @@
                     </div>
                 </div>
             </li>
+            <button class="cats-but"><a class="but-text" href="{% url 'update_cats' pk=object.id %}">Изменить кошечку</a></button>
         {% endfor %}
     </ul>
 {% endblock %}

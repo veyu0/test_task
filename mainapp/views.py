@@ -1,9 +1,10 @@
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from authapp.models import User
-from mainapp.forms import CatsForm, CreationCatsForm, CatsEditForm
+from mainapp.forms import CatsForm, CreationCatsForm
 from mainapp.models import Cats
 
 cats_list = Cats.objects.all()
@@ -30,6 +31,9 @@ class CatsListView(ListView):
         context['cats_list'] = cats_list
         return context
 
+    def get_queryset(self):
+        return Cats.objects.filter(user=self.request.user)
+
 
 class CatsCreateView(CreateView):
     template_name = 'mainapp/create_cats.html'
@@ -43,21 +47,10 @@ class CatsCreateView(CreateView):
         return context
 
 
-class PreUpdateCatsView(ListView):
-    template_name = 'preupdate_cats.html'
-    model = Cats
-    form_class = CatsEditForm
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Выбрать кошку'
-        context['cats_list'] = cats_list
-
-
 class CatsUpdateView(UpdateView):
     template_name = 'mainapp/update_cats.html'
     model = Cats
-    form_class = CatsEditForm
+    form_class = CreationCatsForm
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -67,7 +60,16 @@ class CatsUpdateView(UpdateView):
 
 
 class CatDeleteView(DeleteView):
-    pass
+    template_name = 'mainapp/delete_cats.html'
+    model = Cats
+    success_url = reverse_lazy('mainapp:cats')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Удалить кошечку'
+        context['cats_list'] = cats_list
+        return context
+
 
 class AboutUsListView(ListView):
     template_name = 'mainapp/about_us.html'

@@ -2,26 +2,26 @@
 {% load static %}
 {% block content %}
     <form class="form-box" method="post" id="registration-form" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="input-label">
-                <p class="reg-text">Имя</p>
-            </div>
-            {{ form.name }}
+        {% csrf_token %}
+        <div class="input-label">
+            <p class="reg-text">Имя</p>
+        </div>
+        {{ form.name }}
 
-            <div class="input-label">
-                <p class="reg-text">Возраст</p>
-            </div>
-            {{ form.age }}
+        <div class="input-label">
+            <p class="reg-text">Возраст</p>
+        </div>
+        {{ form.age }}
 
-            <div class="input-label">
-                <p class="reg-text">Порода</p>
-            </div>
-            {{ form.breed }}
+        <div class="input-label">
+            <p class="reg-text">Порода</p>
+        </div>
+        {{ form.breed }}
 
-            <div class="input-label">
-                <p class="reg-text">Фото</p>
-            </div>
-            {{ form.photo }}
-        </form>
-        <button type="submit" form="registration-form" class="form-button">Отправить</button>
+        <div class="input-label">
+            <p class="reg-text">Фото</p>
+        </div>
+        {{ form.photo }}
+    </form>
+    <button type="submit" form="registration-form" class="form-button">Отправить</button>
 {% endblock %}

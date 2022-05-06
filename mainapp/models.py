@@ -5,7 +5,7 @@ from authapp.models import User
 
 class Cats(models.Model):
     id = models.IntegerField(unique=True, primary_key=True, auto_created=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, verbose_name='user_id')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, verbose_name='user_id')
     name = models.CharField(max_length=20, verbose_name='name')
     age = models.IntegerField(verbose_name='age')
     breed = models.CharField(max_length=20, verbose_name='breed')
