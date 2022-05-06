@@ -2,18 +2,25 @@
 {% load static %}
 {% block content %}
     {% if user.is_staff %}
-        <button><a href="{% url 'create_cats' %}">Создать кошечку</a></button>
+        <button class="cats-but"><a class="but-text" href="{% url 'create_cats' %}">Создать кошечку</a></button>
+        <button class="cats-but"><a class="but-text" href="{% url 'preupdate_cats' %}">Изменить кошечку</a></button>
     {% endif %}
-    <ul>
+    <ul class="cats-list">
         {% for object in object_list %}
             <li>
-                <div>
-                    {{ object.name }}
-                    {{ object.age }}
-                    {{ object.breed }}
-                    {% if object.photo %}
-                        <img src="{{ object.photo.url }}" alt="photo">
-                    {% endif %}
+                <div class="cat-card">
+                    <div class="info">
+                        {{ object.name }},
+                        Возраст {{ object.age }}
+                    </div>
+                    <div class="breed">
+                       Порода: {{ object.breed }}
+                    </div>
+                    <div>
+                        {% if object.photo %}
+                            <img class="cat-photo" src="{{ object.photo.url }}" alt="photo">
+                        {% endif %}
+                    </div>
                 </div>
             </li>
         {% endfor %}

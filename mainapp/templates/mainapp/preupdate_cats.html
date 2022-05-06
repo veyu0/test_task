@@ -1,0 +1,9 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+    {% if user.is_staff %}
+        <p>{{ form.name }}</p>
+        <button class="cats-but"><a class="but-text" href="{% url 'update_cats' %}">Изменить кошечку</a></button>
+        
+    {% endif %}
+{% endblock %}

@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from authapp.models import User
 from mainapp.forms import CatsForm, CreationCatsForm, CatsEditForm
@@ -32,7 +32,7 @@ class CatsListView(ListView):
 
 
 class CatsCreateView(CreateView):
-    template_name = 'mainapp/update_cats.html'
+    template_name = 'mainapp/create_cats.html'
     model = Cats
     form_class = CreationCatsForm
 
@@ -41,6 +41,17 @@ class CatsCreateView(CreateView):
         context['title'] = 'Создать кошечку'
         context['cats_list'] = cats_list
         return context
+
+
+class PreUpdateCatsView(ListView):
+    template_name = 'preupdate_cats.html'
+    model = Cats
+    form_class = CatsEditForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Выбрать кошку'
+        context['cats_list'] = cats_list
 
 
 class CatsUpdateView(UpdateView):
@@ -54,6 +65,9 @@ class CatsUpdateView(UpdateView):
         context['cats_list'] = cats_list
         return context
 
+
+class CatDeleteView(DeleteView):
+    pass
 
 class AboutUsListView(ListView):
     template_name = 'mainapp/about_us.html'

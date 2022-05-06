@@ -1,0 +1,26 @@
+.cats-list{
+    list-style-type: none;
+    margin-left: 400px;
+}
+
+.cats-but{
+    background: aquamarine;
+    margin-left: 60px;
+}
+
+.but-text{
+    color: black;
+}
+
+.cat-card{
+    display: flex;
+    background-color: aliceblue;
+    width: 580px;
+    height: 300px;
+}
+
+.cat-photo{
+    width: 350px;
+    height: 200px;
+    padding-top: 30px;
+}

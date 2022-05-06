@@ -24,7 +24,7 @@ class CreationCatsForm(forms.ModelForm):
 class CatsEditForm(forms.ModelForm):
     class Meta:
         model = Cats
-        fields = '__all__'
+        fields = fields = ['name', 'age', 'breed', 'photo']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
